@@ -1,0 +1,13 @@
+{
+  "name": "muh-server",
+  "version": "1.0.0",
+  "description": "Just a simple useless server to learn some concepts",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main.js"
+  },
+  "author": "sumireko",
+  "license": "ISC"
+}
