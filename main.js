@@ -12,8 +12,9 @@ const middlewares = [log];
 
 const controllers = {
   'api': {
-    'store-data': (args) => {
-      console.log('proceed to store data');
+    'store-data': (body) => {
+      const data = JSON.parse(body);
+      console.log(data);
     }
   }
 }
@@ -56,14 +57,14 @@ const router = (req, res) => {
       let body = null;
 
       if (req.method === "POST") {
-        // Retrieve buffer
-        req.on('data', (chunk) => console.log(chunk.toString('utf-8')));
-        body = req.socket;
+        req.on('data', (chunk) => {
+          body = chunk.toString('utf-8');
+          controller(body);
+          success(res);
+        });
       }
 
-      controller(body);
-
-      return success(res);
+      break;
     }
 
   } while (segments.shift());
